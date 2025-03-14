@@ -40,12 +40,13 @@ if st.button("Generate HTML Email"):
     
     # Wrap the final email in basic HTML structure
     formatted_html = f"""
-    <html>
-    <body>
-    <p>{formatted_email.replace('\n', '<br>')}</p>
-    </body>
-    </html>
-    """
+<html>
+<body>
+{formatted_email}  <!-- No <p> tags wrapping everything, so existing HTML stays intact -->
+</body>
+</html>
+"""
+
     
     st.subheader("Formatted Email HTML:")
     st.code(formatted_html, language='html')
