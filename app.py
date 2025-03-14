@@ -13,6 +13,8 @@ def get_google_sheet_data(sheet_id, range_name):
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=sheet_id, range=range_name).execute()
     return pd.DataFrame(result.get("values", []), columns=["Keyword", "URL"])
+    st.write(link_data)  # Display the fetched data
+
 
 # Function to auto-link text
 def auto_link_text(email_text, link_data):
@@ -50,3 +52,4 @@ if st.button("Generate HTML Email"):
     st.subheader("Formatted Email HTML:")
     st.code(formatted_html, language='html')
     st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
+
