@@ -49,14 +49,15 @@ if st.button("Generate HTML Email"):
     formatted_email = auto_link_text(email_text, link_data)
 
     # ✅ FIX: Preserve existing HTML structure without overriding formatting
-    formatted_html = f"""
-    <html>
-    <body>
-    {formatted_email}
-    </body>
-    </html>
-    """
+   formatted_html = f"""
+<html>
+<body>
+{formatted_email}  <!-- Keeps original structure and prevents duplicate tags -->
+</body>
+</html>
+"""
 
-    st.subheader("Formatted Email HTML:")
-    st.code(formatted_html, language='html')
-    st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
+
+st.subheader("Formatted Email HTML:")
+st.code(formatted_html, language='html')
+st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
