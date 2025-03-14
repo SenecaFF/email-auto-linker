@@ -46,10 +46,7 @@ formatted_html = f"""
 </body>
 </html>
 """
-
-
-
     
-    st.subheader("Formatted Email HTML:")
-    st.code(formatted_html, language='html')
-    st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
+st.subheader("Formatted Email HTML:")
+st.code(formatted_html, language='html')
+st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
