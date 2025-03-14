@@ -39,13 +39,14 @@ if st.button("Generate HTML Email"):
     formatted_email = auto_link_text(email_text, link_data)
     
     # Wrap the final email in basic HTML structure
-  formatted_html = f"""
+formatted_html = f"""
 <html>
 <body>
 {formatted_email}  <!-- Keeps raw HTML intact -->
 </body>
 </html>
 """
+
 
 
     
