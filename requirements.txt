@@ -6,3 +6,4 @@ google-auth-httplib2
 google-auth-oauth2
 google-api-python-client
 google-auth-oauthlib
+google-auth-oauth2-tools
