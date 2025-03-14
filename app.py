@@ -28,7 +28,7 @@ def auto_link_text(email_text, link_data):
         url = row["URL"].strip()
 
         # Match the keyword even if it's part of a longer phrase
-        pattern = rf'({re.escape(keyword)})'
+        pattern = rf'(?<!\w){re.escape(keyword)}(?!\w)'
         replacement = f'<a href="{url}">{keyword}</a>'
 
         email_text = re.sub(pattern, replacement, email_text, flags=re.IGNORECASE)
@@ -49,15 +49,18 @@ if st.button("Generate HTML Email"):
     formatted_email = auto_link_text(email_text, link_data)
 
     # ✅ FIX: Preserve existing HTML structure without overriding formatting
-   formatted_html = f"""
-<html>
-<body>
-{formatted_email}  <!-- Keeps original structure and prevents duplicate tags -->
-</body>
-</html>
-"""
+    if "<html>" in formatted_email and "<body>" in formatted_email:
+        # If the input already has <html> and <body> tags, don't wrap it again
+        formatted_html = formatted_email
+    else:
+        formatted_html = f"""
+        <html>
+        <body>
+        {formatted_email}
+        </body>
+        </html>
+        """
 
-
-st.subheader("Formatted Email HTML:")
-st.code(formatted_html, language='html')
-st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
+    st.subheader("Formatted Email HTML:")
+    st.code(formatted_html, language='html')
+    st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
