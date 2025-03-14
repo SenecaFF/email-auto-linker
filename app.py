@@ -63,4 +63,5 @@ if st.button("Generate HTML Email"):
     
     st.subheader("Formatted Email HTML:")
     st.code(formatted_html, language='html')
-    st.download_button("Download HTML File", formatted_html, "email.html
+    st.download_button("Download HTML File", formatted_html, "email.html", "text/html")
+
