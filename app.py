@@ -38,7 +38,12 @@ email_text = st.text_area("Email Draft", height=300)
 
 if st.button("Generate HTML Email"):
     link_data = get_google_sheet_data(sheet_id, range_name)
+    
+    # DEBUG: Display the fetched Google Sheet data
+    st.write("Fetched Google Sheet Data:", link_data)
+
     formatted_email = auto_link_text(email_text, link_data)
+
     
     # Wrap the final email in basic HTML structure
     formatted_html = f"""
